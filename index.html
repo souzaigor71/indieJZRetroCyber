@@ -85,6 +85,24 @@
             margin-bottom: 10px;
         }
 
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            margin-top: 15px;
+            border: 1px solid #0f3d25;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
         .games {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -99,47 +117,10 @@
             text-align: center;
         }
 
-        .game-card h3 {
-            color: #7cffb3;
-            margin-bottom: 10px;
-        }
-
         .price {
             color: var(--green-neon);
             font-size: 18px;
             margin: 10px 0;
-        }
-
-        .btn {
-            background-color: transparent;
-            color: var(--green-neon);
-            border: 1px solid var(--green-neon);
-            padding: 8px 16px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        .btn:hover {
-            background-color: var(--green-neon);
-            color: #000;
-        }
-
-        .canal-box {
-            background-color: #050805;
-            border: 1px solid #0f3d25;
-            border-radius: 10px;
-            padding: 25px;
-            text-align: center;
-        }
-
-        .canal-box p {
-            margin-bottom: 15px;
-            color: #b7ffd8;
-        }
-
-        .canal-btn {
-            text-decoration: none;
-            display: inline-block;
         }
 
         footer {
@@ -167,32 +148,21 @@
 </nav>
 
 <section id="blog">
-    <h2>🕹️ Blog de Desenvolvimento</h2>
+    <h2>🕹️ Devlogs & Blog</h2>
 
+    <!-- DEVLOG AUTOMÁTICO -->
+    <div id="devlogs"></div>
+
+    <!-- VIDEOS RECENTES DO CANAL -->
     <div class="blog-post">
-        <h3>Como criar um jogo retrô do zero</h3>
-        <p>Falamos sobre engines, pixel art, trilha sonora chiptune e design clássico inspirado nos anos 90.</p>
-    </div>
+        <h3>📺 Vídeos recentes do canal</h3>
+        <p>Confira os últimos vídeos publicados no canal Prosa com Jack e Zoe.</p>
 
-    <div class="blog-post">
-        <h3>Dicas para devs indie sobreviverem</h3>
-        <p>Organização, marketing, motivação e como lançar seu primeiro jogo sem grandes recursos.</p>
-    </div>
-
-    <!-- ADIÇÃO DO CANAL DENTRO DO BLOG -->
-    <div class="blog-post">
-        <h3>📺 Conheça nosso canal</h3>
-        <p>
-            Acompanhe nossos <strong>devlogs</strong>, <strong>gameplays</strong> e conteúdos
-            sobre <strong>desenvolvimento de jogos</strong> no nosso canal do YouTube.
-        </p>
-
-        <div class="canal-box">
-            <a class="btn canal-btn"
-               href="https://www.youtube.com/@prosacomjackezoe"
-               target="_blank">
-               Visitar o canal Prosa com Jack e Zoe
-            </a>
+        <div class="video-container">
+            <iframe 
+                src="https://www.youtube.com/embed?listType=user_uploads&list=prosacomjackezoe"
+                allowfullscreen>
+            </iframe>
         </div>
     </div>
 </section>
@@ -202,38 +172,56 @@
 
     <div class="games">
         <div class="game-card">
-            <h3>Nome Jogo.</h3>
-            <p>Descrição jogo.</p>
-            <div class="price">R$ </div>
-            <button class="btn">Comprar</button>
-        </div>
-
-        <div class="game-card">
-            <h3>Nome Jogo.</h3>
-            <p>Descrição jogo.</p>
-            <div class="price">R$ </div>
-            <button class="btn">Comprar</button>
-        </div>
-
-        <div class="game-card">
-            <h3>Nome Jogo.</h3>
-            <p>Descrição jogo.</p>
-            <div class="price">R$ </div>
-            <button class="btn">Comprar</button>
+            <h3>Cyber Tank 1989</h3>
+            <p>Ação arcade retrô</p>
+            <div class="price">R$ 7,99</div>
         </div>
     </div>
 </section>
 
 <section id="sobre">
     <h2>👾 Sobre o IndieJZ RetroCyber</h2>
-    <p>Sou um desenvolvedor indie apaixonado por criar experiências únicas em jogos.
-Aqui você encontra todos os meus projetos em desenvolvimento e games finalizados disponíveis para download.
-Cada jogo é feito com dedicação e muito amor pelo que faço!</p>
+    <p>
+        Projeto indie focado em jogos retrô e devlogs de desenvolvimento.
+    </p>
 </section>
 
 <footer>
-    © 2025 IndieJZ RetroCyber • Todos os direitos reservados
+    © 2025 IndieJZ RetroCyber
 </footer>
+
+<!-- SCRIPT DEVLOG AUTOMÁTICO -->
+<script>
+const devlogs = [
+    {
+        titulo: "Devlog #1 — Início do projeto",
+        descricao: "Começando o desenvolvimento do jogo retrô.",
+        videoId: "SEU_VIDEO_ID_AQUI"
+    },
+    {
+        titulo: "Devlog #2 — Sistema de inimigos",
+        descricao: "IA básica e comportamento dos inimigos.",
+        videoId: "SEU_VIDEO_ID_AQUI"
+    }
+];
+
+const container = document.getElementById("devlogs");
+
+devlogs.forEach(devlog => {
+    container.innerHTML += `
+        <div class="blog-post">
+            <h3>${devlog.titulo}</h3>
+            <p>${devlog.descricao}</p>
+            <div class="video-container">
+                <iframe 
+                    src="https://www.youtube.com/embed/${devlog.videoId}"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    `;
+});
+</script>
 
 </body>
 </html>
